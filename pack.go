@@ -48,7 +48,7 @@ func intToBytes(n int) []byte {
 	x := int32(n)
 
 	bytesBuffer := bytes.NewBuffer([]byte{})
-	// 写入消息头 PC 电脑广泛使用小端序
+	// 写入消息头 PC 电脑和服务器广泛使用小端序
 	binary.Write(bytesBuffer, binary.BigEndian, x)
 	return bytesBuffer.Bytes()
 }
