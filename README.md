@@ -15,10 +15,10 @@ import (
 
 func main() {
 	// 打包一个消息(封包)
-	buf := bytespack.Pack([]byte("this is message"))
+	buf := tcppack.Pack([]byte("this is message"))
 
 	// 解包一个消息(解包)
-	buf = bytespack.Unpack(buf)
+	buf = tcppack.Unpack(buf)
 
 	log.Println(string(buf)) // 输出结果 this is message
 }
