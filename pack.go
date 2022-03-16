@@ -19,6 +19,7 @@ const (
 
 // 封包
 func Pack(buf []byte) []byte {
+	// 将消息内容追加到消息体
 	return append(intToBytes(len(buf)), buf...)
 }
 
@@ -47,6 +48,7 @@ func intToBytes(n int) []byte {
 	x := int32(n)
 
 	bytesBuffer := bytes.NewBuffer([]byte{})
+	// 写入消息头 PC 电脑广泛使用小端序
 	binary.Write(bytesBuffer, binary.BigEndian, x)
 	return bytesBuffer.Bytes()
 }
@@ -56,6 +58,8 @@ func bytesToInt(b []byte) int {
 	bytesBuffer := bytes.NewBuffer(b)
 
 	var x int32
+
+	// 写入消息头 PC 电脑 广泛使用小端序
 	binary.Read(bytesBuffer, binary.BigEndian, &x)
 
 	return int(x)
